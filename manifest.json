@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Zetamac Score Logger",
+  "version": "1.0",
+  "description": "Automatically logs Zetamac arithmetic game scores to Google Sheets",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://arithmetic.zetamac.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://arithmetic.zetamac.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Zetamac Score Logger"
+  }
+}
